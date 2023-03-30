@@ -28,15 +28,15 @@ export const Chat = ({ room }) => {
       snapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
       });
-      console.log(messages);
+
       setMessages(messages);
     });
 
     return () => unsuscribe();
   }, []);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     if (newMessage === "") return;
     await addDoc(messagesRef, {
